@@ -80,6 +80,8 @@ public class generaralelos {
 		String salida = "";
 		int splitPosicion = 5;
 		
+		
+		
 		for (int i = 19; i < ar.numerolineas ; i++) {
 			String[] split = datos[i].split("	");
 			int numInd = split.length;
@@ -88,13 +90,21 @@ public class generaralelos {
 			String ref = split[3];
 			String alt = split[4];
 			
+			
+			
 			try {
 				salida = snp + "\t" + chr + "\t" + ref + "\t" + alt + "\t";
 				for (int j = 9; j < numInd; j++) {
+					
 					String genotipo = split[j].split(":")[0];
+					
 					if (split[j].split(":").length==4){
 						splitPosicion=3;
-					}else{
+					}
+					if (split[j].split(":").length==6){
+						splitPosicion=4;
+					}
+					else{
 						splitPosicion=5;
 					}
 					//System.out.println(getFrecuenciaAlelica(ref, alt, genotipo, split[j].split(":")[splitPosicion]));
@@ -106,7 +116,7 @@ public class generaralelos {
 				salida = "";
 			}
 			catch(Exception e){
-				
+				System.out.println(e);
 			}
 			
 			
@@ -115,11 +125,11 @@ public class generaralelos {
 		return resultado;
 		
 	}
-
+	/*
 	public static void main(String[] args) {
 		generaralelos alelos = new generaralelos();
-		//alelos.getalelos("/home/estuvar4/local_biodata/biodata/projects/tesis/metodologia/huella_molecular/gbs/vcf/263_GBS_Good_Samples_no_adapter_genotypes_biallelicos_no_failed_trimmomatic.vcf");
-		alelos.getalelos(args[0]);
-	}
+		alelos.getalelos("/home/estuvar4/Desktop/pruebas/huellamolecular_sin_imputar_inputado.vcf");
+		//alelos.getalelos(args[0]);
+	}*/
 
 }

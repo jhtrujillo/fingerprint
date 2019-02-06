@@ -4,7 +4,7 @@ import java.io.IOException;
 
 //Clase que filtrar los snps con base al archivo de las dosis alelicas. 
 
-public class filtrarporDosisalelicas {
+public class seleccionarAbanicoDosis {
 
 	public boolean continDosis(double dosismin, double dosismax, String[] dosisSnp) {
 		boolean resultado = false;

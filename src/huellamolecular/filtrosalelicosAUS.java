@@ -6,7 +6,8 @@ public class filtrosalelicosAUS {
 		archivos ar = new archivos();
 		String[] datos = ar.leerfichero2(vcfpath);
 		int cont=0;
-		for (int i = 0; i < ar.numerolineas; i++) {
+		
+		for (int i = 19; i < ar.numerolineas; i++) {
 			int clase = tipodeclase(datos[i]) ;
 			//System.out.println(datos[i]);
 			if (clase > 0 ){
@@ -57,12 +58,12 @@ public class filtrosalelicosAUS {
 
 		return resultado;
 	}
-
+/*
 	public static void main(String[] args) {
 		filtrosalelicosAUS fa = new filtrosalelicosAUS();
 		fa.filtrarporClases(args[0]);
 		
-		//fa.filtrarporClases(
-		//"/home/estuvar4/local_biodata/biodata/projects/tesis/metodologia/huella_molecular/gbs/vcf/263_GBS_Good_Samples_no_adapter_genotypes_biallelicos_no_failed_trimmomatic_alelos.txt");
+		//fa.filtrarporClases("/home/estuvar4/Desktop/pruebas/alelos.txt");
 	}
+	*/
 }
