@@ -54,12 +54,13 @@ public class filtrarporDosisalelicas {
 		} 
 		 //System.out.println(cont);
 	}
-
+	
+	/*
 	public static void main(String[] args) throws IOException {
 		filtrarporDosisalelicas ld = new filtrarporDosisalelicas();
 		// System.out.println("Rango de 4 grupos...");
 		ld.loadDosis(args[0]);
 		//ld.loadDosis("/home/estuvar4/eclipse-workspace/huellamolecular/files2/dosis.txt");
-	}
+	}*/
 
 }
