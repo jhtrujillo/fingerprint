@@ -64,6 +64,28 @@ public class fingerprint {
 							"Try: java -jar fingerprint.jar FiltrarVCF [snps_dosis_aus.txt | snps_dosis_abanico.txt] [path_vcf]");
 				}
 			}
+			// Recibe un listado de snps a seleecionar en el vcf.
+			else if (opcion.compareTo("ReducirHuellaVCF") == 0) {
+				try {
+					VCFgetfilterprint vcfmatrix = new VCFgetfilterprint();;
+					vcfmatrix.VCFfingerprint(args[1], args[2], 0.0, 0.0);
+				} catch (Exception e) {
+					System.out.println(
+							"Try: java -jar fingerprint.jar ReducirHuellaVCF [path_vcf_original] [path_vcf_filtrado (nombre del archivo resultado)]");
+				}
+			}
+			// Recibe un listado de snps a seleecionar en el vcf.
+			else if (opcion.compareTo("similitudGeneitcaCCdist") == 0) {
+				try {
+					VCFgetfilterprint vcfmatrix = new VCFgetfilterprint();;
+					vcfmatrix.VCFload(args[1]);
+					System.out.println("p:2,GD:3");
+					vcfmatrix.getSimilitudeStats(System.out);
+				} catch (Exception e) {
+					System.out.println(
+							"Try: java -jar fingerprint.jar similitudGeneitcaCCdist [path_vcf] ");
+				}
+			}
 
 			// Recibe un listado de snps a seleecionar en el vcf.
 			else if (opcion.compareTo("-h") == 0 || opcion.compareTo("-help") == 0 || opcion.compareTo("--help") == 0
