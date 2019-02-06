@@ -11,7 +11,7 @@ public class filtrosalelicosAUS {
 			int clase = tipodeclase(datos[i]) ;
 			//System.out.println(datos[i]);
 			if (clase > 0 ){
-				System.out.println( datos[i].split("\t")[0]+"\t"+datos[i].split("\t")[1]+"\t"+clase);
+				System.out.println( datos[i].split("\t")[1]+"\t"+datos[i].split("\t")[0]+"\t"+clase);
 				cont++;
 			}
 			
