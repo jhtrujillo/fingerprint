@@ -80,9 +80,18 @@ public class generaralelos {
 		String salida = "";
 		int splitPosicion = 5;
 		
+		boolean escomentario=true;
+		int cont=0;
+		while(escomentario) {
+			if (datos[cont].toString().contains("#")) {
+				cont++;
+			}
+			else {
+				escomentario=false;
+			}
+		}
 		
-		
-		for (int i = 19; i < ar.numerolineas ; i++) {
+		for (int i = cont; i < ar.numerolineas ; i++) {
 			String[] split = datos[i].split("	");
 			int numInd = split.length;
 			String snp = split[1];
@@ -125,11 +134,11 @@ public class generaralelos {
 		return resultado;
 		
 	}
-	/*
+	
 	public static void main(String[] args) {
 		generaralelos alelos = new generaralelos();
-		alelos.getalelos("/home/estuvar4/Desktop/pruebas/huellamolecular_sin_imputar_inputado.vcf");
+		alelos.getalelos("/home/estuvar4/Desktop/pruebas/AllSamples_GBS+Radseq_spon_genotypes_from_unique_standar_filter.vcf");
 		//alelos.getalelos(args[0]);
-	}*/
+	}
 
 }
