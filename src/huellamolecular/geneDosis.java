@@ -36,12 +36,12 @@ public class geneDosis {
 
 		Iterator<VCFRecord> iteratorRecords_tmp = iteratorRecords;
 		
-		System.out.print("id\t");
+		//System.out.print("id\t");
 		for (int i = 0; i<vcfFileReader.getHeader().getSampleIds().size(); i++) {
-			System.out.print(vcfFileReader.getHeader().getSampleIds().get(i)+"\t");
+			//System.out.print(vcfFileReader.getHeader().getSampleIds().get(i)+"\t");
 		}
 
-		System.out.println();
+		//System.out.println();
 		
 		while (iteratorRecords_tmp.hasNext()) {
 			VCFRecord vcfRecord = iteratorRecords.next();
@@ -57,7 +57,9 @@ public class geneDosis {
 			int posicion_snp=vcfRecord.getFirst();
 			String snp_name=vcfRecord.getSequenceName();
 			
-			System.out.print("Allele_"+snp_name+"_"+posicion_snp+"-Dossage_"+snp_name+"_"+posicion_snp+"\t");
+			//System.out.print(snp_name+"_"+posicion_snp+"-Dossage_"+snp_name+"_"+posicion_snp+"\t");
+			
+			System.out.print(snp_name+"_"+posicion_snp+"\t");
 			
 			for (int i=0;i<genotypeCalls.size();i++) {  
 				CalledGenomicVariant call = genotypeCalls.get(i);
@@ -75,13 +77,15 @@ public class geneDosis {
 	    		
 	    		if (idxCalledAlleles.length==0) {
 	    			//System.out.print("./."+"-"+dosage+"\t");
-	    			System.out.print("./."+"\t"+dosage+"\t");
+	    			System.out.print(-1+"\t");
 	    		}
 	    		else if (idxCalledAlleles.length==1) {
-	    			System.out.print(alternativo+"/"+alternativo+"\t"+dosage+"\t");
+	    			//System.out.print(alternativo+"/"+alternativo+"\t"+dosage+"\t");
+	    			System.out.print(dosage+"\t");
 	    		}
 	    		else {
-	    			System.out.print(referencia+"/"+alternativo+"\t"+dosage+"\t");
+	    			//System.out.print(referencia+"/"+alternativo+"\t"+dosage+"\t");
+	    			System.out.print(dosage+"\t");
 	    		}
 	    		
 	    		
@@ -97,7 +101,7 @@ public class geneDosis {
 	public static void main(String[] args) throws IOException {
 		geneDosis dosiscgene = new geneDosis();
 
-		//String vcfFile = "/media/estuvar4/df09c522-d9a9-47c1-bed4-30e92828cb55/estuvar4/Documentos/vcf/huellafinal.vcf";
+		//String vcfFile = "/home/estuvar4/Desktop/pruebas/huellamolecular_sin_imputar_inputado.vcf";
 		//dosiscgene.loadVCF(vcfFile);
 		
 		String vcfFile = args[0];
