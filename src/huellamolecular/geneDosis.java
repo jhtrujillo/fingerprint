@@ -98,6 +98,7 @@ public class geneDosis {
 		//System.out.println(numSNPs);
 	}
 
+	/*
 	public static void main(String[] args) throws IOException {
 		geneDosis dosiscgene = new geneDosis();
 
@@ -107,5 +108,6 @@ public class geneDosis {
 		String vcfFile = args[0];
 		dosiscgene.loadVCF(vcfFile);
 
-	}
+	}*/
+	
 }
