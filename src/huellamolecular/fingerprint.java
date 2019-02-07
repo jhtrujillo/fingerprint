@@ -92,13 +92,12 @@ public class fingerprint {
 					|| opcion.compareTo("") == 0) {
 				try {
 					System.out.println("Try: java -jar fingerprint.jar generarDosis [path_vcf] > snps_dosis.txt");
-					System.out.println(
-							"Try: java -jar fingerprint.jar seleccionarDosisAbanico [snps_dosis.txt (generado con opción generarDosis)] > snps_dosis_abanico.txt");
+					System.out.println("Try: java -jar fingerprint.jar seleccionarDosisAbanico [snps_dosis.txt (generado con opción generarDosis)] > snps_dosis_abanico.txt");
 					System.out.println("Try: java -jar fingerprint.jar generarAlelosVCF [path_vcf] > snps_alelos.txt");
-					System.out.println(
-							"Try: java -jar fingerprint.jar seleccionarDosisAUS [snps_alelos.txt (generado con opción generarAlelosVCF)] > snps_dosis_aus.txt");
-					System.out.println(
-							"Try: java -jar fingerprint.jar FiltrarVCF [snps_dosis_aus.txt | snps_dosis_abanico.txt] [path_vcf]");
+					System.out.println("Try: java -jar fingerprint.jar seleccionarDosisAUS [snps_alelos.txt (generado con opción generarAlelosVCF)] > snps_dosis_aus.txt");
+					System.out.println("Try: java -jar fingerprint.jar FiltrarVCF [snps_dosis_aus.txt | snps_dosis_abanico.txt] [path_vcf]");
+					System.out.println("Try: java -jar fingerprint.jar ReducirHuellaVCF [path_vcf_original] [path_vcf_filtrado (nombre del archivo resultado)]");
+					System.out.println("Try: java -jar fingerprint.jar similitudGeneitcaCCdist [path_vcf] ");
 
 				} catch (Exception e) {
 					System.out.println("Try java -jar fingerprint.jar -help");
