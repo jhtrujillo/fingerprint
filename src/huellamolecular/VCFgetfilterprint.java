@@ -66,7 +66,7 @@ public class VCFgetfilterprint {
 
 		result.add(stdev);
 
-		//out.println(result);
+		out.println(result);
 		return result;
 	}
 
@@ -103,14 +103,14 @@ public class VCFgetfilterprint {
 				if (minmaf == 0.0 && maxmaf == 0.0) { // selecciono cualquier
 														// snps.
 					SNPSelected = vfcFile[i];
-					//System.out.print(SNPSelected.split("	")[0] + "\t" + SNPSelected.split("	")[1] + "\t");
+					System.out.print(SNPSelected.split("	")[0] + "\t" + SNPSelected.split("	")[1] + "\t");
 				} else if (maf < minmaf || maf > maxmaf) {// selecciono solo
 															// aquellos snps que
 															// esten por fuera
 															// de los rangos
 															// deseados.
 					SNPSelected = vfcFile[i];
-					//System.out.print(SNPSelected.split("	")[0] + "\t" + SNPSelected.split("	")[1] + "\t");
+					System.out.print(SNPSelected.split("	")[0] + "\t" + SNPSelected.split("	")[1] + "\t");
 				}
 
 			}
@@ -166,7 +166,7 @@ public class VCFgetfilterprint {
 					// loop = false;
 					ar.eliminarfichero(VCFpathcopy);
 					numIntentos++;
-					System.out.println(" Intentos:"+numIntentos+":"+snpselected.split("	")[0] + "\t" + snpselected.split("	")[1] + "\t");
+					System.out.print(" Intentos:"+numIntentos);
 				} else {
 					numIntentos=0;
 					ar.eliminarfichero(VCFpath);
