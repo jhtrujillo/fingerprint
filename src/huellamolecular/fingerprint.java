@@ -79,7 +79,7 @@ public class fingerprint {
 				try {
 					VCFgetfilterprint vcfmatrix = new VCFgetfilterprint();;
 					vcfmatrix.VCFload(args[1]);
-					System.out.println("p:2,GD:3");
+					System.out.print("p:2,GD:3 ");
 					vcfmatrix.getSimilitudeStats(System.out);
 				} catch (Exception e) {
 					System.out.println(
