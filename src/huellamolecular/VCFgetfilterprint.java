@@ -166,7 +166,7 @@ public class VCFgetfilterprint {
 					// loop = false;
 					ar.eliminarfichero(VCFpathcopy);
 					numIntentos++;
-					System.out.print(" Intentos:"+numIntentos+":"+snpselected.split("	")[0] + "\t" + snpselected.split("	")[1] + "\t");
+					System.out.println(" Intentos:"+numIntentos+":"+snpselected.split("	")[0] + "\t" + snpselected.split("	")[1] + "\t");
 				} else {
 					numIntentos=0;
 					ar.eliminarfichero(VCFpath);
