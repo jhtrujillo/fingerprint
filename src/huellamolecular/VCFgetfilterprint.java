@@ -66,7 +66,7 @@ public class VCFgetfilterprint {
 
 		result.add(stdev);
 
-		out.println(result);
+		//out.println(result);
 		return result;
 	}
 
@@ -103,14 +103,14 @@ public class VCFgetfilterprint {
 				if (minmaf == 0.0 && maxmaf == 0.0) { // selecciono cualquier
 														// snps.
 					SNPSelected = vfcFile[i];
-					System.out.print(SNPSelected.split("	")[0] + "\t" + SNPSelected.split("	")[1] + "\t");
+					//System.out.print(SNPSelected.split("	")[0] + "\t" + SNPSelected.split("	")[1] + "\t");
 				} else if (maf < minmaf || maf > maxmaf) {// selecciono solo
 															// aquellos snps que
 															// esten por fuera
 															// de los rangos
 															// deseados.
 					SNPSelected = vfcFile[i];
-					System.out.print(SNPSelected.split("	")[0] + "\t" + SNPSelected.split("	")[1] + "\t");
+					//System.out.print(SNPSelected.split("	")[0] + "\t" + SNPSelected.split("	")[1] + "\t");
 				}
 
 			}
@@ -122,7 +122,7 @@ public class VCFgetfilterprint {
 	}
 
 	public void VCFfingerprint(String VCFpath, String VCFpathcopy, double minmaf, double maxmaf) throws IOException {
-		System.out.println(VCFpath);
+		System.out.println("FIltrando vcf: "+VCFpath);
 		
 		archivos ar = new archivos();
 		String VCFtmppath = null;
@@ -210,6 +210,6 @@ public class VCFgetfilterprint {
 		 "/home/estuvar4/Desktop/pruebas/AllSamples_GBS+Radseq_spon_genotypes_from_unique_standar_filter.vcf",
 		 "/home/estuvar4/Desktop/pruebas/AllSamples_GBS+Radseq_spon_genotypes_from_unique_standar_filter_1.vcf", 0.0, 0.0);
 
-
 	}*/
+	
 }
