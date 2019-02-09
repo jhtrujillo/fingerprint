@@ -38,7 +38,8 @@ public class fingerprint {
 					generaralelos alelos = new generaralelos();
 					alelos.getalelos(args[1]);
 				} catch (Exception e) {
-					System.out.println("Try: java -jar fingerprint.jar [generarAlelosVCF|3] [path_vcf] > snps_alelos.txt");
+					System.out.println(
+							"Try: java -jar fingerprint.jar [generarAlelosVCF|3] [path_vcf] > snps_alelos.txt");
 				}
 			}
 
@@ -67,7 +68,8 @@ public class fingerprint {
 			// Recibe un listado de snps a seleecionar en el vcf.
 			else if (opcion.compareTo("ReducirHuellaVCF") == 0 || opcion.compareTo("6") == 0) {
 				try {
-					VCFgetfilterprint vcfmatrix = new VCFgetfilterprint();;
+					VCFgetfilterprint vcfmatrix = new VCFgetfilterprint();
+					;
 					vcfmatrix.VCFfingerprint(args[1], args[2], 0.0, 0.0);
 				} catch (Exception e) {
 					System.out.println(
@@ -75,15 +77,24 @@ public class fingerprint {
 				}
 			}
 			// Recibe un listado de snps a seleecionar en el vcf.
-			else if (opcion.compareTo("similitudGeneitcaCCdist" ) == 0 || opcion.compareTo("7") == 0) {
+			else if (opcion.compareTo("similitudGeneitcaCCdist") == 0 || opcion.compareTo("7") == 0) {
 				try {
-					VCFgetfilterprint vcfmatrix = new VCFgetfilterprint();;
+					VCFgetfilterprint vcfmatrix = new VCFgetfilterprint();
+					;
 					vcfmatrix.VCFload(args[1]);
 					System.out.print("p:2,GD:3 ");
 					vcfmatrix.getSimilitudeStats(System.out);
 				} catch (Exception e) {
-					System.out.println(
-							"Try: java -jar fingerprint.jar [similitudGeneitcaCCdist|7] [path_vcf] ");
+					System.out.println("Try: java -jar fingerprint.jar [similitudGeneitcaCCdist|7] [path_vcf] ");
+				}
+			}
+			// Recibe un listado de snps a seleecionar en el vcf.
+			else if (opcion.compareTo("frecuenciaAlelos") == 0 || opcion.compareTo("7") == 0) {
+				try {
+					VCFgetHaplotipes vcfcounter = new VCFgetHaplotipes();
+					vcfcounter.CounterHaplotipes(args[1]);
+				} catch (Exception e) {
+					System.out.println("Try: java -jar fingerprint.jar [frecuenciaAlelos|8] [path_vcf] ");
 				}
 			}
 
@@ -92,11 +103,16 @@ public class fingerprint {
 					|| opcion.compareTo("") == 0) {
 				try {
 					System.out.println("Try: java -jar fingerprint.jar [generarDosis|1] [path_vcf] > snps_dosis.txt");
-					System.out.println("Try: java -jar fingerprint.jar [seleccionarDosisAbanico|2] [snps_dosis.txt (generado con opción generarDosis)] > snps_dosis_abanico.txt");
-					System.out.println("Try: java -jar fingerprint.jar [generarAlelosVCF|3] [path_vcf] > snps_alelos.txt");
-					System.out.println("Try: java -jar fingerprint.jar [seleccionarDosisAUS|4] [snps_alelos.txt (generado con opción generarAlelosVCF)] > snps_dosis_aus.txt");
-					System.out.println("Try: java -jar fingerprint.jar [FiltrarVCF|5] [snps_dosis_aus.txt | snps_dosis_abanico.txt] [path_vcf]");
-					System.out.println("Try: java -jar fingerprint.jar [ReducirHuellaVCF|6] [path_vcf_original] [path_vcf_filtrado (nombre del archivo resultado)]");
+					System.out.println(
+							"Try: java -jar fingerprint.jar [seleccionarDosisAbanico|2] [snps_dosis.txt (generado con opción generarDosis)] > snps_dosis_abanico.txt");
+					System.out.println(
+							"Try: java -jar fingerprint.jar [generarAlelosVCF|3] [path_vcf] > snps_alelos.txt");
+					System.out.println(
+							"Try: java -jar fingerprint.jar [seleccionarDosisAUS|4] [snps_alelos.txt (generado con opción generarAlelosVCF)] > snps_dosis_aus.txt");
+					System.out.println(
+							"Try: java -jar fingerprint.jar [FiltrarVCF|5] [snps_dosis_aus.txt | snps_dosis_abanico.txt] [path_vcf]");
+					System.out.println(
+							"Try: java -jar fingerprint.jar [ReducirHuellaVCF|6] [path_vcf_original] [path_vcf_filtrado (nombre del archivo resultado)]");
 					System.out.println("Try: java -jar fingerprint.jar [similitudGeneitcaCCdist|7] [path_vcf] ");
 
 				} catch (Exception e) {

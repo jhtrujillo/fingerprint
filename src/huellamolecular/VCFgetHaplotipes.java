@@ -74,10 +74,11 @@ public class VCFgetHaplotipes {
 		vcfFileReader.close();
 
 	}
-
+	/*
 	public static void main(String[] args) throws IOException {
 		VCFgetHaplotipes vcfcounter = new VCFgetHaplotipes();
 		vcfcounter.CounterHaplotipes(args[0]);
 		//vcfcounter.CounterHaplotipes("files/huellafinal.vcf");
 	}
+	*/
 }
