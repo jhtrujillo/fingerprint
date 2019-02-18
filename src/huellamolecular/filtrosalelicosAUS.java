@@ -48,10 +48,10 @@ public class filtrosalelicosAUS {
 			
 			
 			
-			if (lowdose >= (this.numInd*0.3) && nodose >= (this.numInd*0.3) && highdose >= this.numInd*0.05){
+			if (lowdose >= (this.numInd*0.33) && nodose >= (this.numInd*0.33) && highdose >= this.numInd*0.05){
 				resultado = 1;
 			}
-			else if (lowdose >= (this.numInd*0.3) && nodose >= (this.numInd*0.3) && highdose <= 0) {
+			else if (lowdose >= (this.numInd*0.33) && nodose >= (this.numInd*0.33) && highdose <= 0) {
 				resultado = 2;
 			}
 			else if (lowdose >= (this.numInd*0.15) && nodose >= (this.numInd*0.15) && highdose <= 0 && middledose <= 0  ) {
