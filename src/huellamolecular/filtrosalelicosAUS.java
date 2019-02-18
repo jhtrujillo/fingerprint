@@ -58,7 +58,7 @@ public class filtrosalelicosAUS {
 				resultado = 0;
 			}
 			
-		}
+		} 
 
 		return resultado;
 	}
