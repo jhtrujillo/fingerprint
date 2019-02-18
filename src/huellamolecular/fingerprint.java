@@ -48,7 +48,7 @@ public class fingerprint {
 			if (opcion.compareTo("seleccionarDosisAUS") == 0 || opcion.compareTo("4") == 0) {
 				try {
 					filtrosalelicosAUS fa = new filtrosalelicosAUS();
-					fa.filtrarporClases(args[1], args[2]);
+					fa.filtrarporClases(args[1], Integer.parseInt(args[2]));
 				} catch (Exception e) {
 					System.out.println(
 							"Try: java -jar fingerprint.jar [seleccionarDosisAUS|4] [snps_alelos.txt (generado con opción generarAlelosVCF)] numIndividuos > snps_dosis_aus.txt");

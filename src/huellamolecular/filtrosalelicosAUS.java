@@ -2,18 +2,18 @@ package huellamolecular;
 
 public class filtrosalelicosAUS {
 	
-	public double numInd=220;
+	public int numInd=220;
 	
-	public void filtrarporClases(String vcfpath, String numInd) {
+	public void filtrarporClases(String vcfpath, int numInd) {
 		archivos ar = new archivos();
 		String[] datos = ar.leerfichero2(vcfpath);
-		this.numInd=Double.parseDouble(numInd);
+		this.numInd=numInd;
 		
 		int cont=0;
 		
 		for (int i = 19; i < ar.numerolineas; i++) {
 			int clase = tipodeclase(datos[i]) ;
-			//System.out.println(datos[i]);
+			
 			if (clase > 0 ){
 				System.out.println( datos[i].split("\t")[1]+"\t"+datos[i].split("\t")[0]+"\t"+clase);
 				cont++;
@@ -46,28 +46,33 @@ public class filtrosalelicosAUS {
 				middledose++;
 			}
 			
-			if (lowdose >= (this.numInd*0.33) && nodose >= this.numInd*0.33 && highdose >= this.numInd*0.07){
+			
+			
+			if (lowdose >= (this.numInd*0.3) && nodose >= (this.numInd*0.3) && highdose >= this.numInd*0.05){
 				resultado = 1;
 			}
-			else if (lowdose >= (this.numInd*0.33) && nodose >= (this.numInd*0.33) && highdose <= 0) {
+			else if (lowdose >= (this.numInd*0.3) && nodose >= (this.numInd*0.3) && highdose <= 0) {
 				resultado = 2;
 			}
-			else if (lowdose >= (this.numInd*0.15) && nodose >= (this.numInd*0.33) && highdose <= 0 && middledose <= 0  ) {
+			else if (lowdose >= (this.numInd*0.15) && nodose >= (this.numInd*0.15) && highdose <= 0 && middledose <= 0  ) {
 				resultado = 3;
 			}else{
 				resultado = 0;
 			}
 			
+			
+			
 		} 
 
 		return resultado;
 	}
-/*
+	
+	/*
 	public static void main(String[] args) {
 		filtrosalelicosAUS fa = new filtrosalelicosAUS();
 		fa.filtrarporClases(args[0]);
 		
-		//fa.filtrarporClases("/home/estuvar4/Desktop/pruebas/alelos.txt");
-	}
-	*/
+		//fa.filtrarporClases("/home/estuvar4/Desktop/alelos_standar.txt", 185);
+	}*/
+	
 }
