@@ -113,6 +113,7 @@ public class fingerprint {
 							"Try: java -jar fingerprint.jar [FiltrarVCF|5] [snps_dosis_aus.txt | snps_dosis_abanico.txt] [path_vcf]");
 					System.out.println(
 							"Try: java -jar fingerprint.jar [ReducirHuellaVCF|6] [path_vcf_original] [path_vcf_filtrado (nombre del archivo resultado)]  numSNP (numSnp en huella)");
+					
 					System.out.println("Try: java -jar fingerprint.jar [similitudGeneitcaCCdist|7] [path_vcf] ");
 
 				} catch (Exception e) {
