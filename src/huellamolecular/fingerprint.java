@@ -96,7 +96,7 @@ public class fingerprint {
 				} catch (Exception e) {
 					System.out.println("Try: java -jar fingerprint.jar [frecuenciaAlelos|8] [path_vcf] ");
 				}
-			}
+			} 
 
 			// Recibe un listado de snps a seleecionar en el vcf.
 			else if (opcion.compareTo("-h") == 0 || opcion.compareTo("-help") == 0 || opcion.compareTo("--help") == 0
