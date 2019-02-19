@@ -73,7 +73,7 @@ public class fingerprint {
 					vcfmatrix.VCFfingerprint(args[1], args[2], 0.0, 0.0, Integer.parseInt(args[3]));
 				} catch (Exception e) {
 					System.out.println(
-							"Try: java -jar fingerprint.jar [ReducirHuellaVCF|6] [path_vcf_original] [path_vcf_filtrado (nombre del archivo resultado)]");
+							"Try: java -jar fingerprint.jar [ReducirHuellaVCF|6] [path_vcf_original] [path_vcf_filtrado (nombre del archivo resultado)] numSNP (numSnp en huella)");
 				}
 			}
 			// Recibe un listado de snps a seleecionar en el vcf.
