@@ -70,7 +70,7 @@ public class fingerprint {
 				try {
 					VCFgetfilterprint vcfmatrix = new VCFgetfilterprint();
 					;
-					vcfmatrix.VCFfingerprint(args[1], args[2], 0.0, 0.0);
+					vcfmatrix.VCFfingerprint(args[1], args[2], 0.0, 0.0, Integer.parseInt(args[3]));
 				} catch (Exception e) {
 					System.out.println(
 							"Try: java -jar fingerprint.jar [ReducirHuellaVCF|6] [path_vcf_original] [path_vcf_filtrado (nombre del archivo resultado)]");

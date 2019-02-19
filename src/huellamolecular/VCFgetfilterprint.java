@@ -121,13 +121,14 @@ public class VCFgetfilterprint {
 		return SNPSelected; 
 	}
 
-	public void VCFfingerprint(String VCFpath, String VCFpathcopy, double minmaf, double maxmaf) throws IOException {
+	public void VCFfingerprint(String VCFpath, String VCFpathcopy, double minmaf, double maxmaf, int minSNP) throws IOException {
 		System.out.println("FIltrando vcf: "+VCFpath);
 		
 		archivos ar = new archivos();
 		String VCFtmppath = null;
 		boolean loop = true;
 		String datos[] = ar.leerfichero2(VCFpath);
+		
 		
 		boolean escomentario=true;
 		int cont=0;
@@ -174,7 +175,7 @@ public class VCFgetfilterprint {
 				}
 			}
 			
-			if (numIntentos>50) {
+			if (numIntentos>50 || ( ar.numerolineas <= (minSNP+cont)) ) {
 				loop=false;
 			}
 			 
