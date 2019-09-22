@@ -53,7 +53,7 @@ public class VCFgetfilterprint {
 
 		result.add(1 - minDistance);
 		result.add(1 - maxDistance);
-		result.add(average);
+		result.add(1- average);
 
 		// Calculo la desviacion standar
 		for (int i = 0; i < distanceMatrix.length; i++) {
@@ -64,7 +64,7 @@ public class VCFgetfilterprint {
 		stdev = stdev / (distanceMatrix.length * distanceMatrix[0].length);
 		stdev = Math.sqrt(stdev);
 
-		result.add(stdev);
+		result.add(1-stdev);
 
 		out.println(result);
 		return result;

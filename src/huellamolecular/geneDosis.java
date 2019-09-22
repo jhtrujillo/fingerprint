@@ -30,84 +30,82 @@ public class geneDosis {
 	public void loadVCF(String vcfFile) throws IOException {
 		vcfFileReader = new VCFFileReader(vcfFile);
 		iteratorRecords = vcfFileReader.iterator();
-		
+
 		samples = vcfFileReader.getHeader().getSamples();
 		int genotypePerSamplesComparison[][] = new int[samples.size()][samples.size()];
 
 		Iterator<VCFRecord> iteratorRecords_tmp = iteratorRecords;
-		
-		//System.out.print("id\t");
-		for (int i = 0; i<vcfFileReader.getHeader().getSampleIds().size(); i++) {
-			//System.out.print(vcfFileReader.getHeader().getSampleIds().get(i)+"\t");
-		}
 
-		//System.out.println();
-		
+		 System.out.print("Chr\tpos\t");
+		for (int i = 0; i < vcfFileReader.getHeader().getSampleIds().size(); i++) {
+			System.out.print(vcfFileReader.getHeader().getSampleIds().get(i)+"\t");
+		}
+		System.out.println();
+		// System.out.println();
+
 		while (iteratorRecords_tmp.hasNext()) {
 			VCFRecord vcfRecord = iteratorRecords.next();
 			GenomicVariant var = vcfRecord.getVariant();
-			String[] alleles = var.getAlleles(); 
-			List<CalledGenomicVariant> genotypeCalls = vcfRecord.getCalls(); 
-			List<String> listado_individuos = vcfRecord.getHeader().getSampleIds(); 
+			String[] alleles = var.getAlleles();
+			List<CalledGenomicVariant> genotypeCalls = vcfRecord.getCalls();
+			List<String> listado_individuos = vcfRecord.getHeader().getSampleIds();
 			float numericGenotypes[] = new float[genotypeCalls.size()];
+
 			
-			
+
 			String referencia = alleles[0];
 			String alternativo = alleles[1];
-			int posicion_snp=vcfRecord.getFirst();
-			String snp_name=vcfRecord.getSequenceName();
-			
-			//System.out.print(snp_name+"_"+posicion_snp+"-Dossage_"+snp_name+"_"+posicion_snp+"\t");
-			
-			System.out.print(snp_name+"_"+posicion_snp+"\t");
-			
-			for (int i=0;i<genotypeCalls.size();i++) {  
+			int posicion_snp = vcfRecord.getFirst();
+			String snp_name = vcfRecord.getSequenceName();
+
+			// System.out.print(snp_name+"_"+posicion_snp+"-Dossage_"+snp_name+"_"+posicion_snp+"\t");
+
+			System.out.print(snp_name + "\t" + posicion_snp + "\t");
+
+			for (int i = 0; i < genotypeCalls.size(); i++) {
 				CalledGenomicVariant call = genotypeCalls.get(i);
-				byte [] idxCalledAlleles = call.getIndexesCalledAlleles();	
+				byte[] idxCalledAlleles = call.getIndexesCalledAlleles();
 				VariantCallReport report = call.getCallReport();
 
-				if(report == null) continue;
+				if (report == null)
+					continue;
 				float countRef = report.getCount(alleles[0]);
-	    		float countAlt = report.getCount(alleles[1]); 
-	    		float dosage = 0;
-	    		
-	    		if((countRef + countAlt) > 0){
-	    			 dosage = countRef / (countRef + countAlt);
-    			}
-	    		
-	    		if (idxCalledAlleles.length==0) {
-	    			//System.out.print("./."+"-"+dosage+"\t");
-	    			System.out.print(-1+"\t");
-	    		}
-	    		else if (idxCalledAlleles.length==1) {
-	    			//System.out.print(alternativo+"/"+alternativo+"\t"+dosage+"\t");
-	    			System.out.print(dosage+"\t");
-	    		}
-	    		else {
-	    			//System.out.print(referencia+"/"+alternativo+"\t"+dosage+"\t");
-	    			System.out.print(dosage+"\t");
-	    		}
-	    		
-	    		
+				float countAlt = report.getCount(alleles[1]);
+				float dosage = 0;
+
+				if ((countRef + countAlt) > 0) {
+					dosage = countRef / (countRef + countAlt);
+				}
+
+				if (idxCalledAlleles.length == 0) {
+					// System.out.print("./."+"-"+dosage+"\t");
+					System.out.print(-1 + "\t");
+				} else if (idxCalledAlleles.length == 1) {
+					// System.out.print(alternativo+"/"+alternativo+"\t"+dosage+"\t");
+					System.out.print(dosage + "\t");
+				} else {
+					// System.out.print(referencia+"/"+alternativo+"\t"+dosage+"\t");
+					System.out.print(dosage + "\t");
+				}
+
 			}
 			System.out.println();
 
 			numSNPs++;
 		}
 
-		//System.out.println(numSNPs);
+		// System.out.println(numSNPs);
 	}
 
-	/*
 	public static void main(String[] args) throws IOException {
 		geneDosis dosiscgene = new geneDosis();
 
-		//String vcfFile = "/home/estuvar4/Desktop/pruebas/huellamolecular_sin_imputar_inputado.vcf";
+		//String vcfFile = "/home/estuvar4/Documents/huella_molecular/huellaRanqueada_1erenvio.vcf";
 		//dosiscgene.loadVCF(vcfFile);
-		
-		String vcfFile = args[0];
-		dosiscgene.loadVCF(vcfFile);
 
-	}*/
-	
+		 String vcfFile = args[0];
+		 dosiscgene.loadVCF(vcfFile);
+
+	}
+
 }

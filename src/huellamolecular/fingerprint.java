@@ -89,14 +89,42 @@ public class fingerprint {
 				}
 			}
 			// Recibe un listado de snps a seleecionar en el vcf.
-			else if (opcion.compareTo("frecuenciaAlelos") == 0 || opcion.compareTo("7") == 0) {
+			else if (opcion.compareTo("frecuenciaAlelos") == 0 || opcion.compareTo("8") == 0) {
 				try {
 					VCFgetHaplotipes vcfcounter = new VCFgetHaplotipes();
 					vcfcounter.CounterHaplotipes(args[1]);
 				} catch (Exception e) {
 					System.out.println("Try: java -jar fingerprint.jar [frecuenciaAlelos|8] [path_vcf] ");
 				}
-			} 
+			}
+
+			// Recibe un listado de snps a seleecionar en el vcf.
+			else if (opcion.compareTo("genDosisTargeted") == 0 || opcion.compareTo("9") == 0) {
+				try {
+					genDosisTargeted genDosis = new genDosisTargeted();
+					genDosis.generarDosis(args[1]);
+				} catch (Exception e) {
+					System.out.println("Try: java -jar fingerprint.jar [genDosisTargeted|9] [path_vcf] ");
+				}
+			}
+			
+			else if (opcion.compareTo("ComprarDosisHuellavsTargeted") == 0 || opcion.compareTo("10") == 0) {
+				try {
+					ComprarDosisHuellavsTargeted cdht = new ComprarDosisHuellavsTargeted();
+					cdht.comprarindividuos(args[1], args[2],args[3], args[4]);
+				} catch (Exception e) {
+					System.out.println("Try: java -jar fingerprint.jar [ComprarDosisHuellavsTargeted|10] dosisSecuenciacion, dosisTargeted, SNPChr, SnpPos");
+				}
+			}
+			else if (opcion.compareTo("vcf-to-tab-targeted") == 0 || opcion.compareTo("11") == 0) {
+				try {
+					vcftotabTargeted vcttotab = new vcftotabTargeted();
+					vcttotab.vcfToTab(args[1]);
+				} catch (Exception e) {
+					System.out.println("Try: java -jar fingerprint.jar [vcf-to-tab-targeted|11] vcf_targeted");
+				}
+			}
+			
 
 			// Recibe un listado de snps a seleecionar en el vcf.
 			else if (opcion.compareTo("-h") == 0 || opcion.compareTo("-help") == 0 || opcion.compareTo("--help") == 0
@@ -113,8 +141,16 @@ public class fingerprint {
 							"Try: java -jar fingerprint.jar [FiltrarVCF|5] [snps_dosis_aus.txt | snps_dosis_abanico.txt] [path_vcf]");
 					System.out.println(
 							"Try: java -jar fingerprint.jar [ReducirHuellaVCF|6] [path_vcf_original] [path_vcf_filtrado (nombre del archivo resultado)]  numSNP (numSnp en huella)");
-					
+
 					System.out.println("Try: java -jar fingerprint.jar [similitudGeneitcaCCdist|7] [path_vcf] ");
+					
+					System.out.println("Try: java -jar fingerprint.jar [frecuenciaAlelos|8] [path_vcf] ");
+					
+					System.out.println("Try: java -jar fingerprint.jar [genDosisTargeted|9] [path_vcf] ");
+					
+					System.out.println("Try: java -jar fingerprint.jar [ComprarDosisHuellavsTargeted|10] dosisSecuenciacion, dosisTargeted, SNPChr, SnpPos");
+					
+					System.out.println("Try: java -jar fingerprint.jar [vcf-to-tab-targeted|11] vcf_targeted");
 
 				} catch (Exception e) {
 					System.out.println("Try java -jar fingerprint.jar -help");
