@@ -111,7 +111,7 @@ public class fingerprint {
 			else if (opcion.compareTo("ComprarDosisHuellavsTargeted") == 0 || opcion.compareTo("10") == 0) {
 				try {
 					ComprarDosisHuellavsTargeted cdht = new ComprarDosisHuellavsTargeted();
-					cdht.comprarindividuos(args[1], args[2],args[3], args[4]);
+					cdht.comprarindividuos(args[1], args[2]);
 				} catch (Exception e) {
 					System.out.println("Try: java -jar fingerprint.jar [ComprarDosisHuellavsTargeted|10] dosisSecuenciacion, dosisTargeted, SNPChr, SnpPos");
 				}

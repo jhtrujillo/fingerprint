@@ -2,6 +2,12 @@ package huellamolecular;
 
 public class ComprarDosisHuellavsTargeted {
 
+	public void existenDosis(String dosisSecuenciacion, String dosisTargeted, String SNPChr, String SnpPos,
+			String Individuo) {
+		
+	}
+	
+	
 	public void comparardosis(String dosisSecuenciacion, String dosisTargeted, String SNPChr, String SnpPos,
 			String Individuo) {
 		archivos arDosis = new archivos();
@@ -30,12 +36,12 @@ public class ComprarDosisHuellavsTargeted {
 			if (SNPChr.compareTo(chr) == 0 && SnpPos.compareTo(pos) == 0) {
 				String dosis = dosisSec[i].split("\t")[posIndiSec];
 				resultado = chr + "\t" + pos + "\t" + Individuo + "\t" + dosis + "\t";
-				// System.out.print(chr + " " + pos + " "+ Individuo+" " + dosis+" ");
+				//System.out.print(chr + " " + pos + " "+ Individuo+" " + dosis+" ");
 				i = arDosis.numerolineas;
 			}
 		}
 
-		String[] individuosTar = dosisTar[0].replace("PV_", "").replace("_R", "").split("\t");
+		String[] individuosTar = dosisTar[0].replace("CONTROL_", "").replace("PV_", "").replace("_R", "").split("\t");
 		int posIndiTar = 0;
 
 		for (int i = 0; i < individuosTar.length; i++) {
@@ -45,52 +51,72 @@ public class ComprarDosisHuellavsTargeted {
 			}
 		}
 
-		// System.out.println(posIndiTar);
+		//System.out.println(posIndiTar);
 		String dosisTarvalue = "";
 
 		for (int i = 1; i < arTar.numerolineas; i++) {
 
 			String chr = dosisTar[i].split("	")[0];
 			String pos = dosisTar[i].split("	")[1];
+			
+			//System.out.println(chr+" "+pos);
 
 			if (SNPChr.compareTo(chr) == 0 && SnpPos.compareTo(pos) == 0) {
 				dosisTarvalue = dosisTar[i].split("\t")[posIndiTar];
 				resultado += dosisTarvalue;
-				// System.out.println(dosis);
+				//System.out.println(dosisTarvalue);
 				i = arTar.numerolineas;
 			}
 		}
 
-		if (dosisTarvalue.compareTo(SNPChr) != 0) {
+		if (dosisTarvalue.compareTo(SNPChr) != 0 && resultado.split("	").length>1) {
 			System.out.println(resultado);
 		}
 
 	}
 
-	public void comprarindividuos(String dosisSecuenciacion, String dosisTargeted, String SNPChr, String SnpPos) {
+	public void comprarindividuos(String dosisSecuenciacion, String dosisTargeted) {
 		archivos arDosis = new archivos();
-		String[] dosisSec = arDosis.leerfichero2(dosisSecuenciacion);
+		String[] dosisSec = arDosis.leerfichero2(dosisTargeted);
 		String[] individuosSec = dosisSec[0].split("\t");
+		
+		for (int i = 1; i < arDosis.numerolineas; i++ ) {
+			
+			String SNPChr1=dosisSec[i].split("	")[0];
+			String SnpPos1=dosisSec[i].split("	")[1];
+			
+			//System.out.println("Evaluando Snps :"+SNPChr1+" "+SnpPos1 );
+			
+			for (int j = 4; j < individuosSec.length; j++) {
+				 
+				comparardosis(dosisSecuenciacion, dosisTargeted, SNPChr1, SnpPos1, individuosSec[j].replace("CONTROL_", ""));
+				//System.out.println(individuosSec[j].replace("CONTROL_", ""));
 
-		for (int i = 2; i < individuosSec.length; i++) {
-
-			comparardosis(dosisSecuenciacion, dosisTargeted, SNPChr, SnpPos, individuosSec[i]);
-			// System.out.println(individuosSec[i]);
-
+			}
+			
+			//System.out.println(SNPChr1+" "+SnpPos1);
+			
 		}
+		
+		
+		
+
+		
 
 	}
 	
-	
+	/*
 	public static void main(String[] args) {
-		String dosisSecuenciacion = "/home/estuvar4/Documents/validacion_huella_molecular_gwas_targeted/dosis_huellaRanqueada_1erenvio.txt";
-		String dosisTargeted = "/home/estuvar4/Documents/validacion_huella_molecular_gwas_targeted/dosis_CEN_132101_FreeBayes_SNPs_Raw.txt";
+		String dosisSecuenciacion = "/home/estuvar4/Desktop/dosis/dosis_huellaRanqueada_1erenvio.txt";
+		String dosisTargeted = "/home/estuvar4/Desktop/dosis/dosis_CEN_132101_FreeBayes_SNPs_Raw_solo_controles.txt";
 
 		ComprarDosisHuellavsTargeted cdht = new ComprarDosisHuellavsTargeted();
 		//cdht.comparardosis(dosisSecuenciacion, dosisTargeted, "super_59", "421521","103");
-		cdht.comprarindividuos(dosisSecuenciacion, dosisTargeted, "super_59", "421521");
+		cdht.comprarindividuos(dosisSecuenciacion, dosisTargeted);
 		//cdht.comprarindividuos(args[0], args[1],args[1], args[2]);
 
 	}
-
+	*/
+	
+	
 }
