@@ -24,7 +24,7 @@ public class VCFgetfilterprint {
 		vcfdistancematrix.setPloidy(2);
 		vcfdistancematrix.setDistanceSource(3);
 		matrix = vcfdistancematrix.generateMatrix(VCFpath);
-		distanceMatrix = matrix.getDistanceMatrix();
+		distanceMatrix = matrix.getDistances();
 		// matrix.printMatrix(System.out);
 	}
 
