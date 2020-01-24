@@ -21,7 +21,7 @@ public class VCFgetfilterprint {
 	public void VCFload(String VCFpath) throws IOException {
 		vcfdistancematrix = new VCFDistanceMatrixCalculator();
 		//vcfdistancematrix.setPloidy(2);
-		vcfdistancematrix.setPloidy(2);
+		vcfdistancematrix.setPloidy((byte) 10);
 		vcfdistancematrix.setDistanceSource(3);
 		matrix = vcfdistancematrix.generateMatrix(VCFpath);
 		distanceMatrix = matrix.getDistances();

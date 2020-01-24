@@ -80,9 +80,8 @@ public class fingerprint {
 			else if (opcion.compareTo("similitudGeneitcaCCdist") == 0 || opcion.compareTo("7") == 0) {
 				try {
 					VCFgetfilterprint vcfmatrix = new VCFgetfilterprint();
-					;
 					vcfmatrix.VCFload(args[1]);
-					System.out.print("p:2,GD:3 ");
+					System.out.print("p:10,GD:3 ");
 					vcfmatrix.getSimilitudeStats(System.out);
 				} catch (Exception e) {
 					System.out.println("Try: java -jar fingerprint.jar [similitudGeneitcaCCdist|7] [path_vcf] ");
@@ -124,6 +123,16 @@ public class fingerprint {
 					System.out.println("Try: java -jar fingerprint.jar [vcf-to-tab-targeted|11] vcf_targeted");
 				}
 			}
+			else if (opcion.compareTo("vcftargetedTovcfNGSEP") == 0 || opcion.compareTo("12") == 0) {
+				try {
+					String dosistargeted = args[1];
+					SimilitudGeneitcaCCdistTargeted smgt = new SimilitudGeneitcaCCdistTargeted();
+					smgt.formattoVCF(dosistargeted);
+				} catch (Exception e) {
+					System.out.println("Try: java -jar fingerprint.jar [vcftargetedTovcfNGSEP|12] vcf_targeted");
+				}
+			}
+			
 			
 
 			// Recibe un listado de snps a seleecionar en el vcf.
@@ -151,6 +160,8 @@ public class fingerprint {
 					System.out.println("Try: java -jar fingerprint.jar [ComprarDosisHuellavsTargeted|10] dosisSecuenciacion, dosisTargeted, SNPChr, SnpPos");
 					
 					System.out.println("Try: java -jar fingerprint.jar [vcf-to-tab-targeted|11] vcf_targeted");
+					
+					System.out.println("Try: java -jar fingerprint.jar [vcftargetedTovcfNGSEP|12] vcf_targeted");
 
 				} catch (Exception e) {
 					System.out.println("Try java -jar fingerprint.jar -help");

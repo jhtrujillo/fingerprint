@@ -102,7 +102,6 @@ public class genDosisTargeted {
 								
 							}
 
-							
 							System.out.print(dosage + "\t");
 						}
 					}
@@ -124,5 +123,5 @@ public class genDosisTargeted {
 		//String vcfFile = args[0];
 		//genDosis.generarDosis(vcfFile);	
 	}
-
+	
 }
