@@ -84,7 +84,7 @@ public class fingerprint {
 					System.out.print("p:10,GD:3 ");
 					vcfmatrix.getSimilitudeStats(System.out);
 				} catch (Exception e) {
-					System.out.println("Try: java -jar fingerprint.jar [similitudGeneitcaCCdist|7] [path_vcf] ");
+					System.out.println("Try: java -jar fingerprint.jar [similitudGeneitcaCCdist | 7] [path_vcf] ");
 				}
 			}
 			// Recibe un listado de snps a seleecionar en el vcf.
