@@ -25,7 +25,12 @@ public class VCFgetfilterprint {
 		vcfdistancematrix.setDistanceSource(3);
 		matrix = vcfdistancematrix.generateMatrix(VCFpath);
 		distanceMatrix = matrix.getDistances();
+		
 		// matrix.printMatrix(System.out);
+	}
+	
+	public void ImprimirMatrix() {
+		matrix.printMatrix(System.out);
 	}
 
 	public ArrayList<Number> getSimilitudeStats(PrintStream out) {
@@ -64,7 +69,7 @@ public class VCFgetfilterprint {
 		stdev = stdev / (distanceMatrix.length * distanceMatrix[0].length);
 		stdev = Math.sqrt(stdev);
 
-		result.add(1-stdev);
+		result.add(stdev);
 
 		out.println(result);
 		return result;
@@ -207,9 +212,9 @@ public class VCFgetfilterprint {
 		//vcfmatrix.VCFfingerprint(args[0], args[1], Double.parseDouble(args[2]), Double.parseDouble(args[3]));
 
 		
-		 vcfmatrix.VCFfingerprint(
-		 "/home/estuvar4/Desktop/pruebas/AllSamples_GBS+Radseq_spon_genotypes_from_unique_standar_filter.vcf",
-		 "/home/estuvar4/Desktop/pruebas/AllSamples_GBS+Radseq_spon_genotypes_from_unique_standar_filter_1.vcf", 0.0, 0.0);
+		//vcfmatrix.VCFfingerprint(
+		//"/home/estuvar4/Desktop/pruebas/AllSamples_GBS+Radseq_spon_genotypes_from_unique_standar_filter.vcf",
+		//"/home/estuvar4/Desktop/pruebas/AllSamples_GBS+Radseq_spon_genotypes_from_unique_standar_filter_1.vcf", 0.0, 0.0);
 
 	}*/
 	

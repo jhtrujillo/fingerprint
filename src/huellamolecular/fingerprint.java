@@ -132,6 +132,18 @@ public class fingerprint {
 					System.out.println("Try: java -jar fingerprint.jar [vcftargetedTovcfNGSEP|12] vcf_targeted");
 				}
 			}
+			else if (opcion.compareTo("printDistanceMatrix") == 0 || opcion.compareTo("13") == 0) {
+				try {
+					VCFgetfilterprint vcfmatrix = new VCFgetfilterprint();
+					vcfmatrix.VCFload(args[1]);
+					System.out.print("p:10,GD:3 ");
+					vcfmatrix.ImprimirMatrix();
+				} catch (Exception e) {
+					System.out.println("Try: java -jar fingerprint.jar [printDistanceMatrix | 13] [path_vcf] ");
+				}
+			}
+			
+			
 			
 			
 
@@ -162,6 +174,8 @@ public class fingerprint {
 					System.out.println("Try: java -jar fingerprint.jar [vcf-to-tab-targeted|11] vcf_targeted");
 					
 					System.out.println("Try: java -jar fingerprint.jar [vcftargetedTovcfNGSEP|12] vcf_targeted");
+										
+					System.out.println("Try: java -jar fingerprint.jar [printDistanceMatrix | 13] [path_vcf] ");
 
 				} catch (Exception e) {
 					System.out.println("Try java -jar fingerprint.jar -help");
