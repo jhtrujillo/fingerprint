@@ -36,7 +36,7 @@ public class fingerprint {
 			else if (opcion.compareTo("generarAlelosVCF") == 0 | opcion.compareTo("3") == 0) {
 				try {
 					generaralelos alelos = new generaralelos();
-					alelos.getalelos(args[1]);
+					alelos.getalelos(args[1], "dosis");
 				} catch (Exception e) {
 					System.out.println(
 							"Try: java -jar fingerprint.jar [generarAlelosVCF|3] [path_vcf] > snps_alelos.txt");
@@ -106,24 +106,23 @@ public class fingerprint {
 					System.out.println("Try: java -jar fingerprint.jar [genDosisTargeted|9] [path_vcf] ");
 				}
 			}
-			
+
 			else if (opcion.compareTo("ComprarDosisHuellavsTargeted") == 0 || opcion.compareTo("10") == 0) {
 				try {
 					ComprarDosisHuellavsTargeted cdht = new ComprarDosisHuellavsTargeted();
 					cdht.comprarindividuos(args[1], args[2]);
 				} catch (Exception e) {
-					System.out.println("Try: java -jar fingerprint.jar [ComprarDosisHuellavsTargeted|10] dosisSecuenciacion, dosisTargeted, SNPChr, SnpPos");
+					System.out.println(
+							"Try: java -jar fingerprint.jar [ComprarDosisHuellavsTargeted|10] dosisSecuenciacion, dosisTargeted, SNPChr, SnpPos");
 				}
-			}
-			else if (opcion.compareTo("vcf-to-tab-targeted") == 0 || opcion.compareTo("11") == 0) {
+			} else if (opcion.compareTo("vcf-to-tab-targeted") == 0 || opcion.compareTo("11") == 0) {
 				try {
 					vcftotabTargeted vcttotab = new vcftotabTargeted();
 					vcttotab.vcfToTab(args[1]);
 				} catch (Exception e) {
 					System.out.println("Try: java -jar fingerprint.jar [vcf-to-tab-targeted|11] vcf_targeted");
 				}
-			}
-			else if (opcion.compareTo("vcftargetedTovcfNGSEP") == 0 || opcion.compareTo("12") == 0) {
+			} else if (opcion.compareTo("vcftargetedTovcfNGSEP") == 0 || opcion.compareTo("12") == 0) {
 				try {
 					String dosistargeted = args[1];
 					SimilitudGeneitcaCCdistTargeted smgt = new SimilitudGeneitcaCCdistTargeted();
@@ -131,8 +130,7 @@ public class fingerprint {
 				} catch (Exception e) {
 					System.out.println("Try: java -jar fingerprint.jar [vcftargetedTovcfNGSEP|12] vcf_targeted");
 				}
-			}
-			else if (opcion.compareTo("printDistanceMatrix") == 0 || opcion.compareTo("13") == 0) {
+			} else if (opcion.compareTo("printDistanceMatrix") == 0 || opcion.compareTo("13") == 0) {
 				try {
 					VCFgetfilterprint vcfmatrix = new VCFgetfilterprint();
 					vcfmatrix.VCFload(args[1]);
@@ -142,10 +140,17 @@ public class fingerprint {
 					System.out.println("Try: java -jar fingerprint.jar [printDistanceMatrix | 13] [path_vcf] ");
 				}
 			}
-			
-			
-			
-			
+			// genera a partir del vcd un txt con los alelos por cada snps: 17120
+			// SCSP803280_000007146 C T 1:1 6:4 4:6
+			else if (opcion.compareTo("VCF-to-tab") == 0 | opcion.compareTo("14") == 0) {
+				try {
+					generaralelos alelos = new generaralelos();
+					alelos.getalelos(args[1], "geno");
+				} catch (Exception e) {
+					System.out.println(
+							"Try: java -jar fingerprint.jar [VCF-to-tab|14] [path_vcf] > vcf-to-tab.csv");
+				}
+			}
 
 			// Recibe un listado de snps a seleecionar en el vcf.
 			else if (opcion.compareTo("-h") == 0 || opcion.compareTo("-help") == 0 || opcion.compareTo("--help") == 0
@@ -164,18 +169,22 @@ public class fingerprint {
 							"Try: java -jar fingerprint.jar [ReducirHuellaVCF|6] [path_vcf_original] [path_vcf_filtrado (nombre del archivo resultado)]  numSNP (numSnp en huella)");
 
 					System.out.println("Try: java -jar fingerprint.jar [similitudGeneitcaCCdist|7] [path_vcf] ");
-					
+
 					System.out.println("Try: java -jar fingerprint.jar [frecuenciaAlelos|8] [path_vcf] ");
-					
+
 					System.out.println("Try: java -jar fingerprint.jar [genDosisTargeted|9] [path_vcf] ");
-					
-					System.out.println("Try: java -jar fingerprint.jar [ComprarDosisHuellavsTargeted|10] dosisSecuenciacion, dosisTargeted, SNPChr, SnpPos");
-					
+
+					System.out.println(
+							"Try: java -jar fingerprint.jar [ComprarDosisHuellavsTargeted|10] dosisSecuenciacion, dosisTargeted, SNPChr, SnpPos");
+
 					System.out.println("Try: java -jar fingerprint.jar [vcf-to-tab-targeted|11] vcf_targeted");
-					
+
 					System.out.println("Try: java -jar fingerprint.jar [vcftargetedTovcfNGSEP|12] vcf_targeted");
-										
+
 					System.out.println("Try: java -jar fingerprint.jar [printDistanceMatrix | 13] [path_vcf] ");
+					
+					System.out.println("Try: java -jar fingerprint.jar [VCF-to-tab|14] [path_vcf] > vcf-to-tab.csv");
+
 
 				} catch (Exception e) {
 					System.out.println("Try java -jar fingerprint.jar -help");

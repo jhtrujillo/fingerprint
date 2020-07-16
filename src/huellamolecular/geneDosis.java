@@ -100,11 +100,11 @@ public class geneDosis {
 	public static void main(String[] args) throws IOException {
 		geneDosis dosiscgene = new geneDosis();
 
-		//String vcfFile = "/home/estuvar4/Documents/huella_molecular/huellaRanqueada_1erenvio.vcf";
-		//dosiscgene.loadVCF(vcfFile);
+		String vcfFile = "/home/estuvar4/Documents/validacionTargeted/CEN_132101_FreeBayes_SNPs_Raw_clean_ngsep.vcf";
+		dosiscgene.loadVCF(vcfFile);
 
-		 String vcfFile = args[0];
-		 dosiscgene.loadVCF(vcfFile);
+		// String vcfFile = args[0];
+		 //dosiscgene.loadVCF(vcfFile);
 
 	}
 

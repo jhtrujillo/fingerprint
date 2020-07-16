@@ -2,7 +2,7 @@ package huellamolecular;
 
 public class filtrosalelicosAUS {
 	
-	public int numInd=220;
+	public int numInd=360;
 	
 	public void filtrarporClases(String vcfpath, int numInd) {
 		archivos ar = new archivos();
@@ -11,8 +11,11 @@ public class filtrosalelicosAUS {
 		
 		int cont=0;
 		
-		for (int i = 19; i < ar.numerolineas; i++) {
+			
+		for (int i = 0; i < ar.numerolineas; i++) {
 			int clase = tipodeclase(datos[i]) ;
+			
+			System.out.println(clase);
 			
 			if (clase > 0 ){
 				System.out.println( datos[i].split("\t")[1]+"\t"+datos[i].split("\t")[0]+"\t"+clase);
@@ -67,12 +70,12 @@ public class filtrosalelicosAUS {
 		return resultado;
 	}
 	
-	/*
+	
 	public static void main(String[] args) {
 		filtrosalelicosAUS fa = new filtrosalelicosAUS();
-		fa.filtrarporClases(args[0]);
+		//fa.filtrarporClases(args[0]);
 		
-		//fa.filtrarporClases("/home/estuvar4/Desktop/alelos_standar.txt", 185);
-	}*/
+		fa.filtrarporClases("/home/estuvar4/Documents/validacionTargeted/snps_alelos.txt", 360);
+	}
 	
 }

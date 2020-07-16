@@ -70,6 +70,7 @@ public class SimilitudGeneitcaCCdistTargeted {
 		int conteoRef=0;
 		int conteAlt=0;
 		
+		
 		if (genotipo.split(":")[1].compareTo(".")!=0){
 			DP=Integer.parseInt(genotipo.split(":")[1]);
 		}
@@ -84,6 +85,7 @@ public class SimilitudGeneitcaCCdistTargeted {
 		}
 		
 		if (genotipo.split(":")[5].compareTo(".")!=0){
+			//System.out.println("Ok "+genotipo);
 			conteAlt=Integer.parseInt(genotipo.split(":")[5]);
 		}else {
 			conteAlt=DP-conteoRef;
@@ -149,11 +151,11 @@ public class SimilitudGeneitcaCCdistTargeted {
 
 	}
 	
-	/*
+	
 	public static void main(String[] args) throws IOException {
-		String dosistargeted = "/home/estuvar4/Documents/validacionTargeted/CEN_132101_FreeBayes_SNPs_Raw_validaron.vcf";
+		String dosistargeted = "/home/estuvar4/Documents/validacionTargeted/CEN_132101_FreeBayes_SNPs_Raw.vcf";
 		SimilitudGeneitcaCCdistTargeted smgt = new SimilitudGeneitcaCCdistTargeted();
 		smgt.formattoVCF(dosistargeted);
-	}*/
+	}
 
 }

@@ -72,7 +72,7 @@ public class generaralelos {
 	
 	
 
-	public  ArrayList<String> getalelos(String vcfpath) {
+	public  ArrayList<String> getalelos(String vcfpath, String opc) {
 		
 		archivos ar = new archivos();
 		String[] datos = ar.leerfichero2(vcfpath);
@@ -116,8 +116,14 @@ public class generaralelos {
 					else{
 						splitPosicion=5;
 					}
-					//System.out.println(getFrecuenciaAlelica(ref, alt, genotipo, split[j].split(":")[splitPosicion]));
-					salida = salida + getFrecuenciaAlelica(ref, alt, genotipo, split[j].split(":")[splitPosicion]) + "\t" ;
+					if (opc.compareTo("geno")==0) {
+						salida= salida + genotipo+" ";
+					}
+					else if (opc.compareTo("dosis")==0) {
+						salida = salida + getFrecuenciaAlelica(ref, alt, genotipo, split[j].split(":")[splitPosicion]) + "\t" ;
+						
+					}
+					
 				}
 				
 				resultado.add(salida);
@@ -126,9 +132,7 @@ public class generaralelos {
 			}
 			catch(Exception e){
 				System.out.println(e);
-			}
-			
-			
+			}	
 			
 		}
 		return resultado;
@@ -137,7 +141,7 @@ public class generaralelos {
 	
 	public static void main(String[] args) {
 		generaralelos alelos = new generaralelos();
-		alelos.getalelos("/home/estuvar4/Desktop/pruebas/AllSamples_GBS+Radseq_spon_genotypes_from_unique_standar_filter.vcf");
+		alelos.getalelos("/home/estuvar4/Desktop/AllSamples_GBS+Radseq_spon_genotypes_from_unique_standar_filter.vcf", "dosis");
 		//alelos.getalelos(args[0]);
 	}
 
