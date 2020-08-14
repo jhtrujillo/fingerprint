@@ -123,7 +123,6 @@ public class generaralelos {
 						salida = salida + getFrecuenciaAlelica(ref, alt, genotipo, split[j].split(":")[splitPosicion]) + "\t" ;
 						
 					}
-					
 				}
 				
 				resultado.add(salida);
