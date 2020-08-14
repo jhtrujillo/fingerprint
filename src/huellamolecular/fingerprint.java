@@ -13,7 +13,7 @@ public class fingerprint {
 				try {
 					geneDosis dosiscgene = new geneDosis();
 					String vcfFile = args[1];
-					dosiscgene.loadVCF(vcfFile);
+					dosiscgene.genDosisAlelicas(vcfFile);
 				} catch (Exception e) {
 					System.out.println("Try: java -jar fingerprint.jar [generarDosis | 1] [path_vcf] > snps_dosis.txt");
 				}

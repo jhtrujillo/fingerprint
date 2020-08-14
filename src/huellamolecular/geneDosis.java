@@ -27,7 +27,7 @@ public class geneDosis {
 	public int numSNPs = 0;
 	Hashtable<String, String[]> hashtable = new Hashtable<String, String[]>();
 
-	public void loadVCF(String vcfFile) throws IOException {
+	public void genDosisAlelicas(String vcfFile) throws IOException {
 		vcfFileReader = new VCFFileReader(vcfFile);
 		iteratorRecords = vcfFileReader.iterator();
 
@@ -100,8 +100,8 @@ public class geneDosis {
 	public static void main(String[] args) throws IOException {
 		geneDosis dosiscgene = new geneDosis();
 
-		String vcfFile = "/home/estuvar4/Documents/validacionTargeted/CEN_132101_FreeBayes_SNPs_Raw_clean_ngsep.vcf";
-		dosiscgene.loadVCF(vcfFile);
+		//String vcfFile = "/home/estuvar4/Documents/validacionTargeted/CEN_132101_FreeBayes_SNPs_Raw_clean_ngsep.vcf";
+		//dosiscgene.genDosisAlelicas(vcfFile);
 
 		// String vcfFile = args[0];
 		 //dosiscgene.loadVCF(vcfFile);
