@@ -27,7 +27,7 @@ public class geneDosis {
 	public int numSNPs = 0;
 	Hashtable<String, String[]> hashtable = new Hashtable<String, String[]>();
 
-	public void loadVCF(String vcfFile) throws IOException {
+	public void getDosis(String vcfFile) throws IOException {
 		vcfFileReader = new VCFFileReader(vcfFile);
 		iteratorRecords = vcfFileReader.iterator();
 
@@ -104,7 +104,7 @@ public class geneDosis {
 		//dosiscgene.loadVCF(vcfFile);
 
 		 String vcfFile = args[0];
-		 dosiscgene.loadVCF(vcfFile);
+		 dosiscgene.getDosis(vcfFile);
 
 	}
 
