@@ -130,7 +130,7 @@ public class generaralelos {
 				salida = "";
 			}
 			catch(Exception e){
-				System.out.println(e);
+				System.out.println(e) ; 
 			}	
 			
 		}
