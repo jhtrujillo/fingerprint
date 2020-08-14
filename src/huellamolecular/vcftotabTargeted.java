@@ -60,6 +60,7 @@ public class vcftotabTargeted {
 
 			} catch (Exception e) {
 				System.out.println("Error en "+linea);
+				System.out.println("Error en "+linea);
 			}
 
 		}
