@@ -152,10 +152,5 @@ public class SimilitudGeneitcaCCdistTargeted {
 	}
 	
 	
-	public static void main(String[] args) throws IOException {
-		String dosistargeted = "/home/estuvar4/Documents/validacionTargeted/CEN_132101_FreeBayes_SNPs_Raw.vcf";
-		SimilitudGeneitcaCCdistTargeted smgt = new SimilitudGeneitcaCCdistTargeted();
-		smgt.formattoVCF(dosistargeted);
-	}
 
 }

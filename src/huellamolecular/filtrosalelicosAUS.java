@@ -71,11 +71,5 @@ public class filtrosalelicosAUS {
 	}
 	
 	
-	public static void main(String[] args) {
-		filtrosalelicosAUS fa = new filtrosalelicosAUS();
-		//fa.filtrarporClases(args[0]);
-		
-		fa.filtrarporClases("/home/estuvar4/Documents/validacionTargeted/snps_alelos.txt", 360);
-	}
 	
 }

@@ -196,21 +196,6 @@ public ArrayList<String> getAlelovsDosis(String vcfpath) {
 		return resultado;
 	}
 
-	public static void main(String[] args) {
-		generateGenotypesDosis alelos = new generateGenotypesDosis();
 	
-		//alelos.getAlelovsDosis("/media/estuvar4/df09c522-d9a9-47c1-bed4-30e92828cb55/estuvar4/Documentos/vcf/tmp.vcf");
-		
-		//alelos.getAlelovsDosis("/media/estuvar4/df09c522-d9a9-47c1-bed4-30e92828cb55/estuvar4/Documentos/vcf/217Samples_genotypes_standard_filters_maf_10_pro_10x_missdata_50_quality_40_dbsnps_5.vcf");
-		
-		
-		String opc=args[0];
-		if (opc.compareTo("1")==0) {
-			alelos.getalelos(args[1]);
-		}
-		if (opc.compareTo("2")==0) {
-			alelos.getAlelovsDosis(args[1]);
-		}
-	}
 	
 }

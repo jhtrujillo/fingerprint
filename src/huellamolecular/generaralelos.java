@@ -139,10 +139,6 @@ public class generaralelos {
 		
 	}
 	
-	public static void main(String[] args) {
-		generaralelos alelos = new generaralelos();
-		alelos.getalelos("/home/estuvar4/Desktop/AllSamples_GBS+Radseq_spon_genotypes_from_unique_standar_filter.vcf", "dosis");
-		//alelos.getalelos(args[0]);
-	}
+	
 
 }

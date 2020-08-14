@@ -106,16 +106,7 @@ public class ComprarDosisHuellavsTargeted {
 	}
 	
 	
-	public static void main(String[] args) {
-		String dosisSecuenciacion = "/home/estuvar4/Desktop/dosis/dosis_huellaRanqueada_1erenvio.txt";
-		String dosisTargeted = "/home/estuvar4/Desktop/dosis/dosis_CEN_132101_FreeBayes_SNPs_Raw_solo_controles.txt";
-
-		ComprarDosisHuellavsTargeted cdht = new ComprarDosisHuellavsTargeted();
-		cdht.comparardosis(dosisSecuenciacion, dosisTargeted, "super_59", "421521","103");
-		cdht.comprarindividuos(dosisSecuenciacion, dosisTargeted);
-		//cdht.comprarindividuos(args[0], args[1],args[1], args[2]);
-
-	}
+	
 
 	
 	

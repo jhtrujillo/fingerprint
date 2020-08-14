@@ -115,13 +115,5 @@ public class genDosisTargeted {
 
 	}
 	
-	
-	public static void main(String[] args) throws IOException {
-		String vcfFile = "/home/estuvar4/eclipse-workspace/ensamblaje/files/CEN_132101_FreeBayes_SNPs_Raw.vcf";
-		genDosisTargeted genDosis = new genDosisTargeted();
-		genDosis.generarDosis(vcfFile);
-		//String vcfFile = args[0];
-		//genDosis.generarDosis(vcfFile);	
-	}
-	
+
 }
