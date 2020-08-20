@@ -26,6 +26,7 @@ public class geneDosis {
 	public int genotypePerSamplesComparison[][];
 	public int numSNPs = 0;
 	Hashtable<String, String[]> hashtable = new Hashtable<String, String[]>();
+	Double[][] matrizDosis;
 
 	public void genDosisAlelicas(String vcfFile) throws IOException {
 		vcfFileReader = new VCFFileReader(vcfFile);
@@ -50,8 +51,6 @@ public class geneDosis {
 			List<CalledGenomicVariant> genotypeCalls = vcfRecord.getCalls();
 			List<String> listado_individuos = vcfRecord.getHeader().getSampleIds();
 			float numericGenotypes[] = new float[genotypeCalls.size()];
-
-			
 
 			String referencia = alleles[0];
 			String alternativo = alleles[1];
