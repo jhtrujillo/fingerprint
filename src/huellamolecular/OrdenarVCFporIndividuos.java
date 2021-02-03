@@ -57,7 +57,7 @@ public class OrdenarVCFporIndividuos {
 				}
 			}
 		}
-		// System.out.println(resultado);
+		 //System.out.println(resultado);
 		return resultado;
 	}
 
@@ -83,33 +83,52 @@ public class OrdenarVCFporIndividuos {
 
 		ar = new archivos();
 		datos = ar.leerfichero2(VCFfile);
-		
+
 		ar2 = new archivos();
 		individuos = ar2.leerfichero2(listado);
 
 		for (int i = 0; i < ar.numerolineas; i++) {
-			if (datos[i].contains("#") != true) {
-				String infoSNP = this.datos[i].split("ACN	")[0] + "ACN";
-				String Chr = this.datos[i].split("	")[0];
-				String Pos = this.datos[i].split("	")[1];
-				String genotiposOrdenados = evaluarlistadoIndividuos(Chr, Pos, listado);
-				if (i==0) {
-					System.out.println(infoSNP + genotiposOrdenados);
+			if (datos[i].contains("#CHROM") == true) {
+				
+				String row=this.datos[i].split("	")[0];
+				
+				for (int k=1; k<9; k++) {
+					row=row+"	"+this.datos[i].split("	")[k];
 				}
-				else {
-					System.out.println(infoSNP + "	" + genotiposOrdenados);
+				row=row+"	";
+				//String row = "#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT";
+				
+
+				for (int j = 0; j < ar2.numerolineas; j++) {
+					if (j==0) {
+						row = row + individuos[j];
+					}else {
+						row = row +"	"+ individuos[j];
+					}
+					
 				}
 				
-			} else if (datos[i].contains("#CHROM") == true) {
-				String row = "#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT";
-				for (int j = 0; j < ar2.numerolineas; j++) {
-					row = row + "	" + individuos[j];
-				}
 				System.out.println(row);
-			}
-			else if (datos[i].contains("##") == true) {
+				
+			} else if (datos[i].contains("##") == true) {
 				System.out.println(datos[i]);
 			}
+			else {
+				String infoSNP=this.datos[i].split("	")[0];
+				String Chr = this.datos[i].split("	")[0];
+				String Pos = this.datos[i].split("	")[1];
+				
+				
+				for (int k=1; k<9; k++) {
+					infoSNP=infoSNP+"	"+this.datos[i].split("	")[k];
+				}
+			
+				
+				String genotiposOrdenados = evaluarlistadoIndividuos(Chr, Pos, listado);
+				
+				System.out.println(infoSNP + "	"+genotiposOrdenados);
+
+			}  
 
 		}
 	}
@@ -120,13 +139,20 @@ public class OrdenarVCFporIndividuos {
 		// sortVCF.datosSNPvsIndi("SCSP803280_000030297", "6938", "9");
 
 		//sortVCF.loadVCF("/home/estuvar4/Downloads/huellaspontaneum.vcf");
-		// sortVCF.datosSNPvsIndi("Chr1B", "11162632", "1");
+		//sortVCF.datosSNPvsIndi("Chr1B", "11162632", "117");
+		
+		//sortVCF.loadVCF("/home/estuvar4/Downloads/huellaSorgo.vcf");
+		//sortVCF.datosSNPvsIndi("Chr02", "23531219", "104");
 
 		// sortVCF.evaluarlistadoIndividuos("Chr1B",
 		// "11162632","/home/estuvar4/Downloads/listado220.txt");
 		//sortVCF.ordenarVCFxListadoIndividuos("/home/estuvar4/Downloads/huellaspontaneum.vcf",
-			//	"/home/estuvar4/Downloads/listado220.txt");
+		//"/home/estuvar4/Downloads/listado_spontaneum.txt");
 
+		//sortVCF.ordenarVCFxListadoIndividuos("/home/estuvar4/Downloads/huellaSorgo.vcf",
+		//"/home/estuvar4/Downloads/listado220.txt");
+
+	
 		// sortVCF.posInd("102");
 
 	}
