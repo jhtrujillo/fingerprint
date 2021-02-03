@@ -16,7 +16,7 @@ public class fingerprint {
 					dosiscgene.genDosisAlelicas(vcfFile);
 					dosiscgene.printDosisMatrix();
 				} catch (Exception e) {
-					System.out.println("Try: java -jar fingerprint.jar [generarDosis | 1] [path_vcf] > snps_dosis.txt");
+					System.out.println("Try: java -jar fingerprint.jar [generarDosis | 1] [path_vcf] > snps_dosis.txt "+e);
 				}
 			}
 
@@ -163,13 +163,12 @@ public class fingerprint {
 					System.out.println("Try: java -jar fingerprint.jar [generarDosisTranspuesta | 15 ] [path_vcf] > snps_dosis.txt");
 				}
 			}
-			else if (opcion.compareTo("getDatosSNPxIndividuo") == 0 || opcion.compareTo("16") == 0) {
+			else if (opcion.compareTo("ordenarVCFxListadoIndividuos") == 0 || opcion.compareTo("16") == 0) {
 				try {
 					OrdenarVCFporIndividuos sortVCF = new OrdenarVCFporIndividuos();
-					sortVCF.loadVCF(args[1]);
-					sortVCF.datosSNPvsIndi(args[2], args[3], args[4]);
+					sortVCF.ordenarVCFxListadoIndividuos(args[1], args[2]);
 				} catch (Exception e) {
-					System.out.println("Try: java -jar fingerprint.jar [getDatosSNPxIndividuo | 16 ] [path_vcf] Chr Pos Individuo> snps_dosis.txt");
+					System.out.println("Try: java -jar fingerprint.jar [ordenarVCFxListadoIndividuos | 16 ] VCFfile ListadoIndividuos");
 				}
 			}
 
@@ -208,8 +207,7 @@ public class fingerprint {
 					
 					System.out.println("Try: java -jar fingerprint.jar [ generarDosisTranspuesta | 15 ] [path_vcf] > snps_dosis_transpuesta.txt");
 					
-					System.out.println("Try: java -jar fingerprint.jar [getDatosSNPxIndividuo | 16 ] [path_vcf] Chr Pos Individuo> snps_dosis.txt");
-
+					System.out.println("Try: java -jar fingerprint.jar [ordenarVCFxListadoIndividuos | 16 ] VCFfile ListadoIndividuos");
 					
 				} catch (Exception e) {
 					System.out.println("Try java -jar fingerprint.jar -help");

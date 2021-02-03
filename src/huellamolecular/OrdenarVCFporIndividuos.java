@@ -50,34 +50,68 @@ public class OrdenarVCFporIndividuos {
 
 				if (snptmp.compareTo(SNP) == 0 && snppos.compareTo(Pos) == 0) {
 					resultado = datos[i].split("	")[posInd(Individuo)];
-					if (resultado.contains("/") != false) {
+					if (resultado.contains("/") == false) {
 						resultado = "./.:0,0,0:0:0:0,0,0,0:0,0";
 					}
 
 				}
 			}
-
 		}
+		// System.out.println(resultado);
 		return resultado;
 	}
 
-	public void evaluarlistadoIndividuos(String Chr, String Pos, String listado) {
+	public String evaluarlistadoIndividuos(String Chr, String Pos, String listado) {
+		// ar2 = new archivos();
+		// individuos = ar2.leerfichero2(listado);
+
+		String resultado = "";
+
+		for (int i = 0; i < ar2.numerolineas; i++) {
+			if (i == 0) {
+				resultado = datosSNPvsIndi(Chr, Pos, individuos[i]);
+			} else {
+				resultado = resultado + "	" + datosSNPvsIndi(Chr, Pos, individuos[i]);
+			}
+		}
+
+		// System.out.println(resultado);
+		return resultado;
+	}
+
+	public void ordenarVCFxListadoIndividuos(String VCFfile, String listado) {
+
+		ar = new archivos();
+		datos = ar.leerfichero2(VCFfile);
+		
 		ar2 = new archivos();
 		individuos = ar2.leerfichero2(listado);
-		
-		String resultado="";
-		
-		for (int i = 0; i < ar2.numerolineas; i++) {
-			if (i==0) {
-				resultado=datosSNPvsIndi(Chr, Pos, individuos[i]);
-			}else {
-				resultado=resultado+"	"+datosSNPvsIndi(Chr, Pos, individuos[i]);
+
+		for (int i = 0; i < ar.numerolineas; i++) {
+			if (datos[i].contains("#") != true) {
+				String infoSNP = this.datos[i].split("ACN	")[0] + "ACN";
+				String Chr = this.datos[i].split("	")[0];
+				String Pos = this.datos[i].split("	")[1];
+				String genotiposOrdenados = evaluarlistadoIndividuos(Chr, Pos, listado);
+				if (i==0) {
+					System.out.println(infoSNP + genotiposOrdenados);
+				}
+				else {
+					System.out.println(infoSNP + "	" + genotiposOrdenados);
+				}
+				
+			} else if (datos[i].contains("#CHROM") == true) {
+				String row = "#CHROM	POS	ID	REF	ALT	QUAL	FILTER	INFO	FORMAT";
+				for (int j = 0; j < ar2.numerolineas; j++) {
+					row = row + "	" + individuos[j];
+				}
+				System.out.println(row);
 			}
-			
+			else if (datos[i].contains("##") == true) {
+				System.out.println(datos[i]);
+			}
+
 		}
-		
-		System.out.println(resultado); 
-		
 	}
 
 	public static void main(String[] args) throws IOException {
@@ -85,12 +119,14 @@ public class OrdenarVCFporIndividuos {
 		// sortVCF.loadVCF("/home/estuvar4/Downloads/huellaSP803280.vcf");
 		// sortVCF.datosSNPvsIndi("SCSP803280_000030297", "6938", "9");
 
-		sortVCF.loadVCF("/home/estuvar4/Downloads/huellaspontaneum.vcf");
-		//sortVCF.datosSNPvsIndi("Chr01", "14455985", "9111");
-		
-		sortVCF.evaluarlistadoIndividuos("Chr01", "14455985","/home/estuvar4/Downloads/listado220.txt");
-		
-		
+		//sortVCF.loadVCF("/home/estuvar4/Downloads/huellaspontaneum.vcf");
+		// sortVCF.datosSNPvsIndi("Chr1B", "11162632", "1");
+
+		// sortVCF.evaluarlistadoIndividuos("Chr1B",
+		// "11162632","/home/estuvar4/Downloads/listado220.txt");
+		//sortVCF.ordenarVCFxListadoIndividuos("/home/estuvar4/Downloads/huellaspontaneum.vcf",
+			//	"/home/estuvar4/Downloads/listado220.txt");
+
 		// sortVCF.posInd("102");
 
 	}
