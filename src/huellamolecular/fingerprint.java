@@ -152,7 +152,7 @@ public class fingerprint {
 							"Try: java -jar fingerprint.jar [VCF-to-tab|14] [path_vcf] > vcf-to-tab.csv");
 				}
 			}
-			else if (opcion.compareTo("generarDosisTranspuesta") == 0 || opcion.compareTo("14") == 0) {
+			else if (opcion.compareTo("generarDosisTranspuesta") == 0 || opcion.compareTo("15") == 0) {
 				try {
 					geneDosis dosiscgene = new geneDosis();
 					String vcfFile = args[1];
@@ -160,7 +160,16 @@ public class fingerprint {
 					dosiscgene.TransposeDosisMatrix();
 					dosiscgene.printTransposeDosisMatrix();
 				} catch (Exception e) {
-					System.out.println("Try: java -jar fingerprint.jar [generarDosisTranspuesta | 14 ] [path_vcf] > snps_dosis.txt");
+					System.out.println("Try: java -jar fingerprint.jar [generarDosisTranspuesta | 15 ] [path_vcf] > snps_dosis.txt");
+				}
+			}
+			else if (opcion.compareTo("getDatosSNPxIndividuo") == 0 || opcion.compareTo("16") == 0) {
+				try {
+					OrdenarVCFporIndividuos sortVCF = new OrdenarVCFporIndividuos();
+					sortVCF.loadVCF(args[1]);
+					sortVCF.datosSNPvsIndi(args[2], args[3], args[4]);
+				} catch (Exception e) {
+					System.out.println("Try: java -jar fingerprint.jar [getDatosSNPxIndividuo | 16 ] [path_vcf] Chr Pos Individuo> snps_dosis.txt");
 				}
 			}
 
@@ -194,12 +203,14 @@ public class fingerprint {
 					System.out.println("Try: java -jar fingerprint.jar [vcftargetedTovcfNGSEP|12] vcf_targeted");
 
 					System.out.println("Try: java -jar fingerprint.jar [printDistanceMatrix | 13] [path_vcf] ");
-					
+					OrdenarVCFporIndividuos sortVCF = new OrdenarVCFporIndividuos();
 					System.out.println("Try: java -jar fingerprint.jar [VCF-to-tab|14] [path_vcf] > vcf-to-tab.csv");
 					
 					System.out.println("Try: java -jar fingerprint.jar [ generarDosisTranspuesta | 15 ] [path_vcf] > snps_dosis_transpuesta.txt");
+					
+					System.out.println("Try: java -jar fingerprint.jar [getDatosSNPxIndividuo | 16 ] [path_vcf] Chr Pos Individuo> snps_dosis.txt");
 
-
+					
 				} catch (Exception e) {
 					System.out.println("Try java -jar fingerprint.jar -help");
 				}
